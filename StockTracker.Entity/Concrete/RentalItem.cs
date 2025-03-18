@@ -10,10 +10,11 @@ namespace StockTracker.Entity.Concrete
     {
         public int Id { get; set; }
         public int RentalId { get; set; }
+        public Rental Rental { get; set; }
         public int ProductId { get; set; }
+        public Product Product { get; set; }
         public int Quantity { get; set; }
-        public decimal UnitPrice { get; set; }
-        public decimal TotalPrice => Quantity * UnitPrice;
-        public bool IsReturned { get; set; } = false;
+        public decimal MonthlyPrice { get; set; }
+        public decimal TotalPrice => Quantity * MonthlyPrice;
     }
 }

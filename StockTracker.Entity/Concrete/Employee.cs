@@ -9,16 +9,16 @@ namespace StockTracker.Entity.Concrete
     public class Employee
     {
         public int Id { get; set; }
-        public string FullName { get; set; } 
-        public string Phone { get; set; }
-        public string Email { get; set; } 
-        public string Position { get; set; } 
-        public decimal Salary { get; set; } 
-        public DateTime HireDate { get; set; } 
-        public bool IsActive { get; set; } = true; 
+        public string Name { get; set; }
+        public string LastName { get; set; }
 
-    
-        public  ICollection<Rental> Rentals { get; set; } = new List<Rental>(); 
-        public  ICollection<Payment> Payments { get; set; } = new List<Payment>(); 
+        
+        public string Phone { get; set; }
+        public string Position { get; set; }
+        public decimal Salary { get; set; }
+        
+        
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
 }

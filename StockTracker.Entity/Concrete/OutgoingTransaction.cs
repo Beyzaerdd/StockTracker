@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace StockTracker.Entity.Concrete
 {
-    public  class Expense //Depo harcamaları
+    public class OutgoingTransaction
     {
         public int Id { get; set; }
-        public string Description { get; set; }
         public decimal Amount { get; set; } 
-        public DateTime ExpenseDate { get; set; } 
+        public string Description { get; set; } 
+        public DateTime TransactionDate { get; set; } 
     }
 }
