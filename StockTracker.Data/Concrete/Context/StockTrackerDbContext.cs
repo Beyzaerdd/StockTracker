@@ -20,41 +20,107 @@ namespace StockTracker.Data.Concrete.Context
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<WarehouseAccount> WarehouseAccounts { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<RentalItem> RentalItems { get; set; }
-        public DbSet<DeliveredItem> DeliveredItems { get; set; }
-        public DbSet<RemainingItem> RemainingItems { get; set; }
-        public DbSet<AccountTransaction> AccountTransactions { get; set; }
-        public DbSet<Payment> Payments { get; set; }
-        public DbSet<Expense> Expenses { get; set; }
-        public DbSet<AccountSummary> AccountSummaries { get; set; }
+        public DbSet<ReturnedProduct> ReturnedProducts { get; set; }
+        public DbSet<RemainingProduct> RemainingProducts { get; set; }
+        public DbSet<CustomerAccount> CustomerAccounts { get; set; }
+     
+     
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
-            modelBuilder.Entity<Customer>()
-                .HasMany(c => c.Rentals)
-                .WithOne(r => r.Customer)
-                .HasForeignKey(r => r.CustomerId);
 
-       
             modelBuilder.Entity<Customer>()
-                .HasMany(c => c.Payments)
-                .WithOne(p => p.Customer)
-                .HasForeignKey(p => p.CustomerId);
+             .HasKey(c => c.Id);
+
+            modelBuilder.Entity<Customer>()
+                .Property(c => c.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            // Product Configuration
+            modelBuilder.Entity<Product>()
+                .HasKey(p => p.Id);
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.MonthlyPrice)
+                .HasColumnType("decimal(18,2)");
+
+            // Rental Configuration
+            modelBuilder.Entity<Rental>()
+                .HasKey(r => r.Id);
+
+            modelBuilder.Entity<Rental>()
+                .HasOne(r => r.Customer)
+                .WithMany(c => c.Rentals)
+                .HasForeignKey(r => r.CustomerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // RentalItem Configuration
+            modelBuilder.Entity<RentalItem>()
+                .HasKey(ri => ri.Id);
+
+            modelBuilder.Entity<RentalItem>()
+                .HasOne(ri => ri.Rental)
+                .WithMany(r => r.RentalItems)
+                .HasForeignKey(ri => ri.RentalId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<RentalItem>()
+         .HasOne(ri => ri.Product)
+         .WithMany()
+         .HasForeignKey(ri => ri.ProductId)
+         .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<RemainingProduct>()
+        .HasKey(rp => rp.Id);
+
+            modelBuilder.Entity<RemainingProduct>()
+                .HasOne(rp => rp.RentalItem)   // RentalItem ile ilişkilendiriyoruz
+                .WithMany()                     // RentalItem birden fazla RemainingProduct'e sahip olabilir
+                .HasForeignKey(rp => rp.RentalItemId)  // ForeignKey olarak RentalItemId kullanıyoruz
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ReturnedProduct>()
+         .HasKey(rp => rp.Id);
+
+            modelBuilder.Entity<ReturnedProduct>()
+                .HasOne(rp => rp.RentalItem)    // RentalItem ile ilişkilendiriyoruz
+                .WithMany()                      // RentalItem birden fazla ReturnedProduct'e sahip olabilir
+                .HasForeignKey(rp => rp.RentalItemId)   // ForeignKey olarak RentalItemId kullanıyoruz
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // CustomerAccount Configuration
+            modelBuilder.Entity<CustomerAccount>()
+                .HasKey(ca => ca.Id);
+
+            modelBuilder.Entity<CustomerAccount>()
+                .HasOne(ca => ca.Customer)
+                .WithMany()
+                .HasForeignKey(ca => ca.CustomerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // WarehouseAccount Configuration
+            modelBuilder.Entity<WarehouseAccount>()
+                .HasKey(wa => wa.Id);
+
+            // Employee Configuration
+            modelBuilder.Entity<Employee>()
+                .HasKey(e => e.Id);
 
             modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Rentals)
-                .WithOne(r => r.Employee)
-                .HasForeignKey(r => r.EmployeeId);
-
-         
-            modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Payments)
-                .WithOne(p => p.Employee)
-                .HasForeignKey(p => p.EmployeeId);
-
+                .Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(100);
 
             modelBuilder.Entity<ApplicationRole>().HasData(
                new ApplicationRole { Id = "115c7796-cfac-44de-91b5-916eaae125b5", Name = "AdminUser", NormalizedName = "ADMINUSER", Description = "Administrator role" },
@@ -97,28 +163,28 @@ namespace StockTracker.Data.Concrete.Context
                 new IdentityUserRole<string> { UserId = adminUser2.Id, RoleId = "811f466c-9d06-43f8-a054-24aedbb4161b" }
             );
             modelBuilder.Entity<Customer>().HasData(
-       new Customer { Id = 1, Name = "Ali Yılmaz", Phone = "555-111-2233", Email = "ali@example.com", Address = "İstanbul" },
-       new Customer { Id = 2, Name = "Mehmet Demir", Phone = "555-222-3344", Email = "mehmet@example.com", Address = "Ankara" },
-       new Customer { Id = 3, Name = "Ayşe Çelik", Phone = "555-333-4455", Email = "ayse@example.com", Address = "İzmir" },
-       new Customer { Id = 4, Name = "Zeynep Korkmaz", Phone = "555-444-5566", Email = "zeynep@example.com", Address = "Bursa" },
-       new Customer { Id = 5, Name = "Mustafa Kaya", Phone = "555-555-6677", Email = "mustafa@example.com", Address = "Antalya" }
+       new Customer { Id = 1, Address="dfdfdf", Email="sdsds", Name="dfdf", LastName="fgdfd", Phone="34322"},
+        new Customer { Id = 2, Address = "dfdfdf", Email = "sdsds", Name = "dfdf", LastName = "fgdfd", Phone = "34322" }
    );
-
-            modelBuilder.Entity<Employee>().HasData(
-                new Employee { Id = 1, FullName = "Ahmet Karaca", Phone = "544-123-4567", Email = "ahmet@example.com", Position = "Satış Temsilcisi", Salary = 15000, HireDate = new DateTime(2022, 5, 10), IsActive = true },
-                new Employee { Id = 2, FullName = "Elif Yıldız", Phone = "544-234-5678", Email = "elif@example.com", Position = "Muhasebe", Salary = 18000, HireDate = new DateTime(2021, 7, 15), IsActive = true },
-                new Employee { Id = 3, FullName = "Caner Doğan", Phone = "544-345-6789", Email = "caner@example.com", Position = "Depo Sorumlusu", Salary = 17000, HireDate = new DateTime(2020, 3, 20), IsActive = true },
-                new Employee { Id = 4, FullName = "Gizem Arslan", Phone = "544-456-7890", Email = "gizem@example.com", Position = "Müşteri Temsilcisi", Salary = 16000, HireDate = new DateTime(2019, 8, 5), IsActive = true },
-                new Employee { Id = 5, FullName = "Murat Şahin", Phone = "544-567-8901", Email = "murat@example.com", Position = "Teknik Destek", Salary = 14000, HireDate = new DateTime(2023, 1, 10), IsActive = true }
-            );
-
             modelBuilder.Entity<Product>().HasData(
-                new Product { Id = 1, Name = "Ahşap Masa", SquareMeters = 2.5, Price = 4500, UnitRentalPrice = 200, Description = "Dayanıklı ve şık ahşap masa" },
-                new Product { Id = 2, Name = "Metal Sandalye", SquareMeters = 1.2, Price = 1200, UnitRentalPrice = 100, Description = "Dayanıklı metal sandalye" },
-                new Product { Id = 3, Name = "Koltuk Takımı", SquareMeters = 5.0, Price = 15000, UnitRentalPrice = 500, Description = "Konforlu ve geniş koltuk takımı" },
-                new Product { Id = 4, Name = "Laminant Parke", SquareMeters = 20.0, Price = 3500, UnitRentalPrice = 150, Description = "Modern laminant parke döşeme" },
-                new Product { Id = 5, Name = "Projektör", SquareMeters = 0.5, Price = 5000, UnitRentalPrice = 250, Description = "Yüksek çözünürlüklü projektör" }
-            );
+    new Product
+    {
+        Id = 1,
+        Name = "Laptop",
+        MonthlyPrice = 300.00m,  // Aylık kira bedeli
+        StockQuantity = 100,
+        Description = "Laptop description"
+    },
+    new Product
+    {
+        Id = 2,
+        Name = "Projector",
+        MonthlyPrice = 150.00m,
+        StockQuantity = 200,
+        Description = "Projector description"
+    }
+);
+
 
             base.OnModelCreating(modelBuilder);
         }

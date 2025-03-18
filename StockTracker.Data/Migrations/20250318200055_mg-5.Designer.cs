@@ -11,8 +11,8 @@ using StockTracker.Data.Concrete.Context;
 namespace StockTracker.Data.Migrations
 {
     [DbContext(typeof(StockTrackerDbContext))]
-    [Migration("20250315220517_mg-4")]
-    partial class mg4
+    [Migration("20250318200055_mg-5")]
+    partial class mg5
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -134,58 +134,6 @@ namespace StockTracker.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.AccountSummary", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Month")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("TotalExpense")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("TotalIncome")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AccountSummaries");
-                });
-
-            modelBuilder.Entity("StockTracker.Entity.Concrete.AccountTransaction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsPaid")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("TransactionDate")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("AccountTransactions");
-                });
-
             modelBuilder.Entity("StockTracker.Entity.Concrete.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
@@ -228,7 +176,7 @@ namespace StockTracker.Data.Migrations
                         new
                         {
                             Id = "115c7796-cfac-44de-91b5-916eaae125b5",
-                            CreatedDate = new DateTime(2025, 3, 16, 1, 5, 17, 520, DateTimeKind.Local).AddTicks(7173),
+                            CreatedDate = new DateTime(2025, 3, 18, 23, 0, 55, 636, DateTimeKind.Local).AddTicks(8739),
                             Description = "Administrator role",
                             IsActive = true,
                             Name = "AdminUser",
@@ -237,7 +185,7 @@ namespace StockTracker.Data.Migrations
                         new
                         {
                             Id = "811f466c-9d06-43f8-a054-24aedbb4161b",
-                            CreatedDate = new DateTime(2025, 3, 16, 1, 5, 17, 520, DateTimeKind.Local).AddTicks(7241),
+                            CreatedDate = new DateTime(2025, 3, 18, 23, 0, 55, 636, DateTimeKind.Local).AddTicks(8799),
                             Description = "Regular user role",
                             IsActive = true,
                             Name = "NormalUser",
@@ -322,7 +270,7 @@ namespace StockTracker.Data.Migrations
                         {
                             Id = "c0b7fef7-df2b-4857-9b3d-bc8967ad19ac",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a9360786-edcb-4b38-b42a-2db66affca0b",
+                            ConcurrencyStamp = "8ebfa94d-5218-41e5-aead-9cc06f38bc5b",
                             Email = "adminuser@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -330,10 +278,10 @@ namespace StockTracker.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINUSER@GMAIL.COM",
                             NormalizedUserName = "mehmet@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAELsR4mqTEcjAL+gPVLHpMhfgCSRfkg4EIIB/iY/OTL97VvCJrIbTowQjAo2N0w4Bxg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBxpAMwImWM8PdXMk7fl6sY/u/zEqzVcwd5y4c2H2RqjEMbYTiagXYYK2C6SXy6Qvw==",
                             PhoneNumber = "5255",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "78b7f6ff-b681-429e-8241-059593546e26",
+                            SecurityStamp = "6baae86d-6d14-4a6e-92e2-8aa98be1a975",
                             TwoFactorEnabled = false,
                             UserName = "mehmet@gmail.com"
                         },
@@ -341,7 +289,7 @@ namespace StockTracker.Data.Migrations
                         {
                             Id = "14a0183f-1e96-4930-a83d-6ef5f22d8c09",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "431a5449-8933-49d8-ba08-2182bf65c673",
+                            ConcurrencyStamp = "ac6ce054-3355-490d-98e5-b6052facde58",
                             Email = "normaluser@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin2",
@@ -349,9 +297,9 @@ namespace StockTracker.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@GMAIL.COM",
                             NormalizedUserName = "admin@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM27L65A3uY50ijgvpSxC9L4l2qyNBtPIamoTsqNyr9ItqN8ime2Z3sC/BzgxJM6Xw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGD8R4OFgXW5BAE77yK04nUa3UAonoZew91k1vlNVZOMRrRkWyEzivAfBKu4WBj2Kw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dec6a618-4bfc-43de-b940-04be3aa94082",
+                            SecurityStamp = "322edf68-9500-42cf-bfa3-3bf6abe9df40",
                             TwoFactorEnabled = false,
                             UserName = "normaluser@gmail.com"
                         });
@@ -367,15 +315,17 @@ namespace StockTracker.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
@@ -390,70 +340,58 @@ namespace StockTracker.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "İstanbul",
-                            CreatedAt = new DateTime(2025, 3, 16, 1, 5, 17, 592, DateTimeKind.Local).AddTicks(773),
-                            Email = "ali@example.com",
-                            Name = "Ali Yılmaz",
-                            Phone = "555-111-2233"
+                            Address = "dfdfdf",
+                            Email = "sdsds",
+                            LastName = "fgdfd",
+                            Name = "dfdf",
+                            Phone = "34322"
                         },
                         new
                         {
                             Id = 2,
-                            Address = "Ankara",
-                            CreatedAt = new DateTime(2025, 3, 16, 1, 5, 17, 592, DateTimeKind.Local).AddTicks(797),
-                            Email = "mehmet@example.com",
-                            Name = "Mehmet Demir",
-                            Phone = "555-222-3344"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Address = "İzmir",
-                            CreatedAt = new DateTime(2025, 3, 16, 1, 5, 17, 592, DateTimeKind.Local).AddTicks(798),
-                            Email = "ayse@example.com",
-                            Name = "Ayşe Çelik",
-                            Phone = "555-333-4455"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Address = "Bursa",
-                            CreatedAt = new DateTime(2025, 3, 16, 1, 5, 17, 592, DateTimeKind.Local).AddTicks(799),
-                            Email = "zeynep@example.com",
-                            Name = "Zeynep Korkmaz",
-                            Phone = "555-444-5566"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Address = "Antalya",
-                            CreatedAt = new DateTime(2025, 3, 16, 1, 5, 17, 592, DateTimeKind.Local).AddTicks(800),
-                            Email = "mustafa@example.com",
-                            Name = "Mustafa Kaya",
-                            Phone = "555-555-6677"
+                            Address = "dfdfdf",
+                            Email = "sdsds",
+                            LastName = "fgdfd",
+                            Name = "dfdf",
+                            Phone = "34322"
                         });
                 });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.DeliveredItem", b =>
+            modelBuilder.Entity("StockTracker.Entity.Concrete.CustomerAccount", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DeliveredDate")
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("CustomerId1")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("RentalItemId")
-                        .HasColumnType("INTEGER");
+                    b.Property<decimal>("PaidAmount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RentalItemId");
+                    b.HasIndex("CustomerId");
 
-                    b.ToTable("DeliveredItems");
+                    b.HasIndex("CustomerId1");
+
+                    b.ToTable("CustomerAccounts");
                 });
 
             modelBuilder.Entity("StockTracker.Entity.Concrete.Employee", b =>
@@ -462,19 +400,17 @@ namespace StockTracker.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Email")
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("HireDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -487,69 +423,15 @@ namespace StockTracker.Data.Migrations
                     b.Property<decimal>("Salary")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "ahmet@example.com",
-                            FullName = "Ahmet Karaca",
-                            HireDate = new DateTime(2022, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            Phone = "544-123-4567",
-                            Position = "Satış Temsilcisi",
-                            Salary = 15000m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "elif@example.com",
-                            FullName = "Elif Yıldız",
-                            HireDate = new DateTime(2021, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            Phone = "544-234-5678",
-                            Position = "Muhasebe",
-                            Salary = 18000m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "caner@example.com",
-                            FullName = "Caner Doğan",
-                            HireDate = new DateTime(2020, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            Phone = "544-345-6789",
-                            Position = "Depo Sorumlusu",
-                            Salary = 17000m
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Email = "gizem@example.com",
-                            FullName = "Gizem Arslan",
-                            HireDate = new DateTime(2019, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            Phone = "544-456-7890",
-                            Position = "Müşteri Temsilcisi",
-                            Salary = 16000m
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Email = "murat@example.com",
-                            FullName = "Murat Şahin",
-                            HireDate = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            Phone = "544-567-8901",
-                            Position = "Teknik Destek",
-                            Salary = 14000m
-                        });
                 });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.Expense", b =>
+            modelBuilder.Entity("StockTracker.Entity.Concrete.IncomingTransaction", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -562,44 +444,43 @@ namespace StockTracker.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("ExpenseDate")
+                    b.Property<DateTime>("TransactionDate")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("WarehouseAccountId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Expenses");
+                    b.HasIndex("WarehouseAccountId");
+
+                    b.ToTable("IncomingTransaction");
                 });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.Payment", b =>
+            modelBuilder.Entity("StockTracker.Entity.Concrete.OutgoingTransaction", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("AccountTransactionId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<decimal>("Amount")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("PaymentDate")
+                    b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("WarehouseAccountId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountTransactionId");
+                    b.HasIndex("WarehouseAccountId");
 
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("Payments");
+                    b.ToTable("OutgoingTransaction");
                 });
 
             modelBuilder.Entity("StockTracker.Entity.Concrete.Product", b =>
@@ -612,18 +493,16 @@ namespace StockTracker.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("MonthlyPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("SquareMeters")
-                        .HasColumnType("REAL");
-
-                    b.Property<decimal>("UnitRentalPrice")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("StockQuantity")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -633,66 +512,28 @@ namespace StockTracker.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Dayanıklı ve şık ahşap masa",
-                            Name = "Ahşap Masa",
-                            Price = 4500m,
-                            SquareMeters = 2.5,
-                            UnitRentalPrice = 200m
+                            Description = "Laptop description",
+                            MonthlyPrice = 300.00m,
+                            Name = "Laptop",
+                            StockQuantity = 100
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Dayanıklı metal sandalye",
-                            Name = "Metal Sandalye",
-                            Price = 1200m,
-                            SquareMeters = 1.2,
-                            UnitRentalPrice = 100m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Konforlu ve geniş koltuk takımı",
-                            Name = "Koltuk Takımı",
-                            Price = 15000m,
-                            SquareMeters = 5.0,
-                            UnitRentalPrice = 500m
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Modern laminant parke döşeme",
-                            Name = "Laminant Parke",
-                            Price = 3500m,
-                            SquareMeters = 20.0,
-                            UnitRentalPrice = 150m
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Yüksek çözünürlüklü projektör",
-                            Name = "Projektör",
-                            Price = 5000m,
-                            SquareMeters = 0.5,
-                            UnitRentalPrice = 250m
+                            Description = "Projector description",
+                            MonthlyPrice = 150.00m,
+                            Name = "Projector",
+                            StockQuantity = 200
                         });
                 });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.RemainingItem", b =>
+            modelBuilder.Entity("StockTracker.Entity.Concrete.RemainingProduct", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DueDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("OverdueCharge")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("RemainingQuantity")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("RentalId")
+                    b.Property<int>("DaysRemaining")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("RentalItemId")
@@ -702,7 +543,7 @@ namespace StockTracker.Data.Migrations
 
                     b.HasIndex("RentalItemId");
 
-                    b.ToTable("RemainingItems");
+                    b.ToTable("RemainingProducts");
                 });
 
             modelBuilder.Entity("StockTracker.Entity.Concrete.Rental", b =>
@@ -714,23 +555,21 @@ namespace StockTracker.Data.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsPaid")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("RentalDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("TotalAmount")
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("VATRate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Rentals");
                 });
@@ -741,48 +580,66 @@ namespace StockTracker.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<decimal>("MonthlyPrice")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ProductId1")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RentalDays")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("RentalId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("ProductId1");
 
                     b.HasIndex("RentalId");
 
                     b.ToTable("RentalItems");
                 });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.Stock", b =>
+            modelBuilder.Entity("StockTracker.Entity.Concrete.ReturnedProduct", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int>("QuantityReturned")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Quantity")
+                    b.Property<int>("RentalItemId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("ReturnDate")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("RentalItemId");
 
-                    b.ToTable("Stocks");
+                    b.ToTable("ReturnedProducts");
+                });
+
+            modelBuilder.Entity("StockTracker.Entity.Concrete.WarehouseAccount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WarehouseAccounts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -836,59 +693,41 @@ namespace StockTracker.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.AccountTransaction", b =>
+            modelBuilder.Entity("StockTracker.Entity.Concrete.CustomerAccount", b =>
                 {
                     b.HasOne("StockTracker.Entity.Concrete.Customer", "Customer")
-                        .WithMany("AccountTransactions")
+                        .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("StockTracker.Entity.Concrete.Customer", null)
+                        .WithMany("Transactions")
+                        .HasForeignKey("CustomerId1");
+
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.DeliveredItem", b =>
+            modelBuilder.Entity("StockTracker.Entity.Concrete.IncomingTransaction", b =>
+                {
+                    b.HasOne("StockTracker.Entity.Concrete.WarehouseAccount", null)
+                        .WithMany("IncomingTransactions")
+                        .HasForeignKey("WarehouseAccountId");
+                });
+
+            modelBuilder.Entity("StockTracker.Entity.Concrete.OutgoingTransaction", b =>
+                {
+                    b.HasOne("StockTracker.Entity.Concrete.WarehouseAccount", null)
+                        .WithMany("OutgoingTransactions")
+                        .HasForeignKey("WarehouseAccountId");
+                });
+
+            modelBuilder.Entity("StockTracker.Entity.Concrete.RemainingProduct", b =>
                 {
                     b.HasOne("StockTracker.Entity.Concrete.RentalItem", "RentalItem")
                         .WithMany()
                         .HasForeignKey("RentalItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("RentalItem");
-                });
-
-            modelBuilder.Entity("StockTracker.Entity.Concrete.Payment", b =>
-                {
-                    b.HasOne("StockTracker.Entity.Concrete.AccountTransaction", "AccountTransaction")
-                        .WithMany("Payments")
-                        .HasForeignKey("AccountTransactionId");
-
-                    b.HasOne("StockTracker.Entity.Concrete.Customer", "Customer")
-                        .WithMany("Payments")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StockTracker.Entity.Concrete.Employee", "Employee")
-                        .WithMany("Payments")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AccountTransaction");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("StockTracker.Entity.Concrete.RemainingItem", b =>
-                {
-                    b.HasOne("StockTracker.Entity.Concrete.RentalItem", "RentalItem")
-                        .WithMany()
-                        .HasForeignKey("RentalItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("RentalItem");
@@ -902,24 +741,20 @@ namespace StockTracker.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StockTracker.Entity.Concrete.Employee", "Employee")
-                        .WithMany("Rentals")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Customer");
-
-                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("StockTracker.Entity.Concrete.RentalItem", b =>
                 {
                     b.HasOne("StockTracker.Entity.Concrete.Product", "Product")
-                        .WithMany("RentalItems")
+                        .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("StockTracker.Entity.Concrete.Product", null)
+                        .WithMany("RentalItems")
+                        .HasForeignKey("ProductId1");
 
                     b.HasOne("StockTracker.Entity.Concrete.Rental", "Rental")
                         .WithMany("RentalItems")
@@ -932,49 +767,39 @@ namespace StockTracker.Data.Migrations
                     b.Navigation("Rental");
                 });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.Stock", b =>
+            modelBuilder.Entity("StockTracker.Entity.Concrete.ReturnedProduct", b =>
                 {
-                    b.HasOne("StockTracker.Entity.Concrete.Product", "Product")
-                        .WithOne("Stock")
-                        .HasForeignKey("StockTracker.Entity.Concrete.Stock", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("StockTracker.Entity.Concrete.RentalItem", "RentalItem")
+                        .WithMany()
+                        .HasForeignKey("RentalItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("StockTracker.Entity.Concrete.AccountTransaction", b =>
-                {
-                    b.Navigation("Payments");
+                    b.Navigation("RentalItem");
                 });
 
             modelBuilder.Entity("StockTracker.Entity.Concrete.Customer", b =>
                 {
-                    b.Navigation("AccountTransactions");
-
-                    b.Navigation("Payments");
-
                     b.Navigation("Rentals");
-                });
 
-            modelBuilder.Entity("StockTracker.Entity.Concrete.Employee", b =>
-                {
-                    b.Navigation("Payments");
-
-                    b.Navigation("Rentals");
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("StockTracker.Entity.Concrete.Product", b =>
                 {
                     b.Navigation("RentalItems");
-
-                    b.Navigation("Stock")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("StockTracker.Entity.Concrete.Rental", b =>
                 {
                     b.Navigation("RentalItems");
+                });
+
+            modelBuilder.Entity("StockTracker.Entity.Concrete.WarehouseAccount", b =>
+                {
+                    b.Navigation("IncomingTransactions");
+
+                    b.Navigation("OutgoingTransactions");
                 });
 #pragma warning restore 612, 618
         }
