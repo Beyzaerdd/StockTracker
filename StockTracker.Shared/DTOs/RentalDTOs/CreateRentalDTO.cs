@@ -11,7 +11,8 @@ namespace StockTracker.Shared.DTOs.RentalDTOs
     {
         public int CustomerId { get; set; }
         public DateTime StartDate { get; set; }
-   
+        public DateTime EndDate { get; set; }
+
         public List<CreateRentalItemDTO> RentalItems { get; set; }
          public decimal? VATRate { get; set; }  
     }
